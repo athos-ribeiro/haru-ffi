@@ -1,8 +1,8 @@
 <?php
 
-namespace phpdotnet\phd;
+namespace Haru;
 
-class Haru_HaruException extends \Exception {
+class HaruException extends \Exception {
     public function __construct($message, $code = 0, Throwable $previous = null) {
         switch($code) {
             default:

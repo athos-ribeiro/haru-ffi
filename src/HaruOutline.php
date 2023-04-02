@@ -1,8 +1,8 @@
 <?php
 
-namespace phpdotnet\phd;
+namespace Haru;
 
-class Haru_HaruOutline {
+class HaruOutline {
     public $h = null;
     private $ffi = null;
 
@@ -10,14 +10,14 @@ class Haru_HaruOutline {
         $this->ffi = \FFI::load(__DIR__.'/hpdf.h');
         $this->h = $outline_ref;
         if(is_null($this->h)) {
-            throw new Haru_HaruException('Cannot create HaruOutline handle');
+            throw new HaruException('Cannot create HaruOutline handle');
         }
     }
 
     public function setDestination($dest) {
         $status = $this->ffi->HPDF_Outline_SetDestination($this->h, $dest->h);
         if($status) {
-            throw new Haru_HaruException('', $status);
+            throw new HaruException('', $status);
         }
     }
 
@@ -25,7 +25,7 @@ class Haru_HaruOutline {
     {
         $status = $this->ffi->HPDF_Outline_SetOpened($this->h, $opened);
         if($status) {
-            throw new Haru_HaruException('', $status);
+            throw new HaruException('', $status);
         }
     }
 }

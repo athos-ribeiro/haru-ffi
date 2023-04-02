@@ -1,8 +1,8 @@
 <?php
 
-namespace phpdotnet\phd;
+namespace Haru;
 
-class Haru_HaruFont {
+class HaruFont {
     public $h = null;
     private $ffi = null;
 
@@ -10,7 +10,7 @@ class Haru_HaruFont {
         $this->ffi = \FFI::load(__DIR__.'/hpdf.h');
         $this->h = $font_ref;
         if(is_null($this->h)) {
-            throw new Haru_HaruException('Cannot create HaruFont handle');
+            throw new HaruException('Cannot create HaruFont handle');
         }
     }
 
