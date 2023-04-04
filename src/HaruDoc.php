@@ -2,14 +2,16 @@
 
 namespace Haru;
 
-class HaruDoc {
-    const COMP_ALL = 0x0F;
-    const PAGE_MODE_USE_OUTLINE = 1;
+class HaruDoc
+{
+    public const COMP_ALL = 0x0F;
+    public const PAGE_MODE_USE_OUTLINE = 1;
 
     private $h = null;
     private $ffi = null;
 
-    public function __construct() {
+    public function __construct()
+    {
         try {
             $this->ffi = \FFI::load(__DIR__.'/hpdf.h');
         } catch(\FFI\Exception $e) {
@@ -21,35 +23,40 @@ class HaruDoc {
         }
     }
 
-    public function setCompressionMode($mode) {
+    public function setCompressionMode($mode)
+    {
         $status = $this->ffi->HPDF_SetCompressionMode($this->h, $mode);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function addPageLabel($first_page, $style, $first_num, $string_prefix = null) {
+    public function addPageLabel($first_page, $style, $first_num, $string_prefix = null)
+    {
         $status = $this->ffi->HPDF_AddPageLabel($this->h, $first_page, $style, $first_num, $string_prefix);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function setPageMode($mode) {
+    public function setPageMode($mode)
+    {
         $status = $this->ffi->HPDF_SetPageMode($this->h, $mode);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function setPagesConfiguration($page_per_pages) {
+    public function setPagesConfiguration($page_per_pages)
+    {
         $status = $this->ffi->HPDF_SetPagesConfiguration($this->h, $page_per_pages);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function getFont($font_name, $encoding_name) {
+    public function getFont($font_name, $encoding_name)
+    {
         $font_ref = $this->ffi->HPDF_GetFont($this->h, $font_name, $encoding_name);
         if(is_null($font_ref)) {
             throw new HaruException('Cannot create HaruFont handle');
@@ -58,7 +65,8 @@ class HaruDoc {
         return $font;
     }
 
-    public function save($file_name) {
+    public function save($file_name)
+    {
         $status = $this->ffi->HPDF_SaveToFile($this->h, $file_name);
         if($status) {
             throw new HaruException('', $status);
@@ -66,8 +74,9 @@ class HaruDoc {
     }
 
     // Note that the order of params differ from the underlying function
-    public function createOutline($title, $parent = null, $encoder = null) {
-        if($parent){
+    public function createOutline($title, $parent = null, $encoder = null)
+    {
+        if($parent) {
             $parent = $parent->h;
         }
         $outline_ref = $this->ffi->HPDF_CreateOutline($this->h, $parent, $title, $encoder);
@@ -78,7 +87,8 @@ class HaruDoc {
         return $outline;
     }
 
-    public function addPage() {
+    public function addPage()
+    {
         $page_ref = $this->ffi->HPDF_AddPage($this->h);
         if(is_null($page_ref)) {
             throw new HaruException('Cannot create HaruPage handle');
@@ -88,13 +98,15 @@ class HaruDoc {
     }
 
     // TODO: this should return a new HaruImage instance
-    public function loadPNG($filename) {
+    public function loadPNG($filename)
+    {
         $image_ref = $this->ffi->HPDF_LoadPngImageFromFile($this->h, $filename);
         return $image_ref;
     }
 
     // TODO: this should return a new HaruImage instance
-    public function loadJPEG() {
+    public function loadJPEG()
+    {
         $image_ref = $this->ffi->HPDF_LoadJpegImageFromFile($this->h, $filename);
         return $image_ref;
     }

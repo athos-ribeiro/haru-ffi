@@ -2,14 +2,16 @@
 
 namespace Haru;
 
-class HaruPage {
-    const NUM_STYLE_DECIMAL = 0;
-    const FILL = 0;
+class HaruPage
+{
+    public const NUM_STYLE_DECIMAL = 0;
+    public const FILL = 0;
 
     private $h = null;
     private $ffi = null;
 
-    public function __construct($page_ref) {
+    public function __construct($page_ref)
+    {
         $this->ffi = \FFI::load(__DIR__.'/hpdf.h');
         $this->h = $page_ref;
         if(is_null($this->h)) {
@@ -17,28 +19,32 @@ class HaruPage {
         }
     }
 
-    public function setTextRenderingMode($mode) {
+    public function setTextRenderingMode($mode)
+    {
         $status = $this->ffi->HPDF_Page_SetTextRenderingMode($this->h, $mode);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function setRGBStroke($r, $g, $b) {
+    public function setRGBStroke($r, $g, $b)
+    {
         $status = $this->ffi->HPDF_Page_SetRGBStroke($this->h, $r, $g, $b);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function setRGBFill($r, $g, $b) {
+    public function setRGBFill($r, $g, $b)
+    {
         $status = $this->ffi->HPDF_Page_SetRGBFill($this->h, $r, $g, $b);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function setFontAndSize($font, $size) {
+    public function setFontAndSize($font, $size)
+    {
         $font_ref = $font->h;
         $status = $this->ffi->HPDF_Page_SetFontAndSize($this->h, $font_ref, $size);
         if($status) {
@@ -46,43 +52,50 @@ class HaruPage {
         }
     }
 
-    public function beginText() {
+    public function beginText()
+    {
         $status = $this->ffi->HPDF_Page_BeginText($this->h);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function getCharSpace() {
+    public function getCharSpace()
+    {
         $char_space = $this->ffi->HPDF_Page_GetCharSpace($this->h);
         return $char_space;
     }
 
-    public function getWordSpace() {
+    public function getWordSpace()
+    {
         $word_space = $this->ffi->HPDF_Page_GetWordSpace($this->h);
         return $word_space;
     }
 
-    public function textOut($x, $y, $text) {
+    public function textOut($x, $y, $text)
+    {
         $status = $this->ffi->HPDF_Page_TextOut($this->h, $x, $y, (string)$text);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function getTextWidth($text) {
+    public function getTextWidth($text)
+    {
         $width = $this->ffi->HPDF_Page_TextWidth($this->h, (string)$text);
         return $width;
     }
 
-    public function endText() {
+    public function endText()
+    {
         $status = $this->ffi->HPDF_Page_EndText($this->h);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function createDestination() {
+    public function createDestination()
+    {
         $dest_ref = $this->ffi->HPDF_Page_CreateDestination($this->h);
         if(is_null($dest_ref)) {
             throw new HaruException('Cannot create HaruDestination handle');
@@ -91,19 +104,22 @@ class HaruPage {
         return $dest;
     }
 
-    public function getHeight() {
+    public function getHeight()
+    {
         $height = $this->ffi->HPDF_Page_GetHeight($this->h);
         return $height;
     }
 
-    public function setLineWidth($width) {
+    public function setLineWidth($width)
+    {
         $status = $this->ffi->HPDF_Page_SetLineWidth($this->h, $width);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function setDash($pattern, $phase) {
+    public function setDash($pattern, $phase)
+    {
         $num_param = 0;
         if($pattern) {
             $num_param = count($pattern);
@@ -120,21 +136,24 @@ class HaruPage {
         }
     }
 
-    public function moveTo($x, $y) {
+    public function moveTo($x, $y)
+    {
         $status = $this->ffi->HPDF_Page_MoveTo($this->h, $x, $y);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function lineTo($x, $y) {
+    public function lineTo($x, $y)
+    {
         $status = $this->ffi->HPDF_Page_LineTo($this->h, $x, $y);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function stroke($close_path = false) {
+    public function stroke($close_path = false)
+    {
         if(!$close_path) {
             $status = $this->ffi->HPDF_Page_Stroke($this->h);
         } else {
@@ -145,7 +164,8 @@ class HaruPage {
         }
     }
 
-    public function createURLAnnotation($rectangle, $url) {
+    public function createURLAnnotation($rectangle, $url)
+    {
         $rect_type = $this->ffi->type("HPDF_Rect");
         $hpdf_rectangle = $this->ffi->new($rect_type);
         $hpdf_rectangle->left = $rectangle[0];
@@ -160,14 +180,16 @@ class HaruPage {
         return $annotation;
     }
 
-    public function rectangle($x, $y, $width, $height) {
+    public function rectangle($x, $y, $width, $height)
+    {
         $status = $this->ffi->HPDF_Page_Rectangle($this->h, $x, $y, $width, $height);
         if($status) {
             throw new HaruException('', $status);
         }
     }
 
-    public function createLinkAnnotation($rectangle, $dest) {
+    public function createLinkAnnotation($rectangle, $dest)
+    {
         $rect_type = $this->ffi->type("HPDF_Rect");
         $hpdf_rectangle = $this->ffi->new($rect_type);
         $hpdf_rectangle->left = $rectangle[0];

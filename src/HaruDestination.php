@@ -2,11 +2,13 @@
 
 namespace Haru;
 
-class HaruDestination {
+class HaruDestination
+{
     public $h = null;
     private $ffi = null;
 
-    public function __construct($dest_ref) {
+    public function __construct($dest_ref)
+    {
         $this->ffi = \FFI::load(__DIR__.'/hpdf.h');
         $this->h = $dest_ref;
         if(is_null($this->h)) {
@@ -14,7 +16,8 @@ class HaruDestination {
         }
     }
 
-    public function setXYZ($left, $top, $zoom) {
+    public function setXYZ($left, $top, $zoom)
+    {
         $status = $this->ffi->HPDF_Destination_SetXYZ($this->h, $left, $top, $zoom);
         if($status) {
             throw new HaruException('', $status);

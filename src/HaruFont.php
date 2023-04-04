@@ -2,11 +2,13 @@
 
 namespace Haru;
 
-class HaruFont {
+class HaruFont
+{
     public $h = null;
     private $ffi = null;
 
-    public function __construct($font_ref) {
+    public function __construct($font_ref)
+    {
         $this->ffi = \FFI::load(__DIR__.'/hpdf.h');
         $this->h = $font_ref;
         if(is_null($this->h)) {
@@ -14,7 +16,8 @@ class HaruFont {
         }
     }
 
-    public function measureText($text, $width, $font_size, $char_space, $word_space, $word_wrap = 0) {
+    public function measureText($text, $width, $font_size, $char_space, $word_space, $word_wrap = 0)
+    {
         $len = strlen($text);
         if(!$len) {
             return 0;
