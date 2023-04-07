@@ -5,7 +5,28 @@ namespace Haru;
 class HaruDoc
 {
     public const COMP_ALL = 0x0F;
+
+    public const PAGE_NUM_STYLE_DECIMAL = 0;
+    public const PAGE_NUM_STYLE_UPPER_ROMAN = 1;
+    public const PAGE_NUM_STYLE_LOWER_ROMAN = 2;
+    public const PAGE_NUM_STYLE_UPPER_LETTERS = 3;
+    public const PAGE_NUM_STYLE_LOWER_LETTERS = 4;
+    public const PAGE_NUM_STYLE_EOF = 1;
+
+    public const PAGE_MODE_USE_NONE = 0;
     public const PAGE_MODE_USE_OUTLINE = 1;
+    public const PAGE_MODE_USE_THUMBS = 2;
+    public const PAGE_MODE_FULL_SCREEN = 3;
+
+    public const FILL = 0;
+    public const STROKE = 1;
+    public const FILL_THEN_STROKE = 2;
+    public const INVISIBLE = 3;
+    public const FILL_CLIPPING = 4;
+    public const STROKE_CLIPPING = 5;
+    public const FILL_STROKE_CLIPPING = 6;
+    public const CLIPPING = 7;
+    public const RENDERING_MODE_EOF = 8;
 
     private $h = null;
     private $ffi = null;
