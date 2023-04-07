@@ -1,5 +1,8 @@
 {
   "name": "athos/haru-ffi",
+  "type": "library",
+  "keywords": ["pdf"],
+  "homepage": "https://github.com/athos-ribeiro/haru-ffi",
   "description": "libHaru FFI bindings compatible with the Haru PECL extension",
   "license": "BSD-2-Clause",
   "require": {
