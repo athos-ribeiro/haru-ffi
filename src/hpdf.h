@@ -20,6 +20,27 @@ typedef enum _HPDF_PageMode {
     HPDF_PAGE_MODE_EOF
 } HPDF_PageMode;
 
+typedef enum _HPDF_PageSizes {
+    HPDF_PAGE_SIZE_LETTER = 0,
+    HPDF_PAGE_SIZE_LEGAL,
+    HPDF_PAGE_SIZE_A3,
+    HPDF_PAGE_SIZE_A4,
+    HPDF_PAGE_SIZE_A5,
+    HPDF_PAGE_SIZE_B4,
+    HPDF_PAGE_SIZE_B5,
+    HPDF_PAGE_SIZE_EXECUTIVE,
+    HPDF_PAGE_SIZE_US4x6,
+    HPDF_PAGE_SIZE_US4x8,
+    HPDF_PAGE_SIZE_US5x7,
+    HPDF_PAGE_SIZE_COMM10,
+    HPDF_PAGE_SIZE_EOF
+} HPDF_PageSizes;
+
+typedef enum _HPDF_PageDirection {
+    HPDF_PAGE_PORTRAIT = 0,
+    HPDF_PAGE_LANDSCAPE
+} HPDF_PageDirection;
+
 typedef  unsigned long       HPDF_STATUS;
 typedef  unsigned int        HPDF_UINT;
 typedef  unsigned short      HPDF_UINT16;
@@ -242,3 +263,8 @@ extern HPDF_Annotation
 HPDF_Page_CreateLinkAnnot  (HPDF_Page          page,
                             HPDF_Rect          rect,
                             HPDF_Destination   dst);
+
+extern HPDF_STATUS
+HPDF_Page_SetSize  (HPDF_Page            page,
+                    HPDF_PageSizes       size,
+                    HPDF_PageDirection   direction);

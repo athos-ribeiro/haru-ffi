@@ -7,6 +7,23 @@ class HaruPage
     public const NUM_STYLE_DECIMAL = 0;
     public const FILL = 0;
 
+    public const SIZE_LETTER = 0;
+    public const SIZE_LEGAL = 1;
+    public const SIZE_A3 = 2;
+    public const SIZE_A4 = 3;
+    public const SIZE_A5 = 4;
+    public const SIZE_B4 = 5;
+    public const SIZE_B5 = 6;
+    public const SIZE_EXECUTIVE = 7;
+    public const SIZE_US4x6 = 8;
+    public const SIZE_US4x8 = 9;
+    public const SIZE_US5x7 = 10;
+    public const SIZE_COMM10 = 11;
+    public const SIZE_EOF = 12;
+
+    public const PORTRAIT = 0;
+    public const LANDSCAPE = 1;
+
     private $h = null;
     private $ffi = null;
 
@@ -38,6 +55,14 @@ class HaruPage
     public function setRGBFill($r, $g, $b)
     {
         $status = $this->ffi->HPDF_Page_SetRGBFill($this->h, $r, $g, $b);
+        if($status) {
+            throw new HaruException('', $status);
+        }
+    }
+
+    public function setSize($size, $direction)
+    {
+        $status = $this->ffi->HPDF_Page_SetSize($this->h, $size, $direction);
         if($status) {
             throw new HaruException('', $status);
         }
