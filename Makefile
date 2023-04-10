@@ -1,7 +1,7 @@
 .PHONY: check clean
 
 check:
-	composer update
+	composer update --quiet
 	vendor/bin/phpunit tests/
 	vendor/bin/php-cs-fixer fix --dry-run --diff -- .
 
