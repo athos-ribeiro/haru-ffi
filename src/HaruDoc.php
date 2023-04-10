@@ -76,7 +76,7 @@ class HaruDoc
         }
     }
 
-    public function getFont($font_name, $encoding_name)
+    public function getFont($font_name, $encoding_name = NULL)
     {
         $font_ref = $this->ffi->HPDF_GetFont($this->h, $font_name, $encoding_name);
         if(is_null($font_ref)) {
