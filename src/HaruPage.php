@@ -5,7 +5,6 @@ namespace Haru;
 class HaruPage
 {
     public const NUM_STYLE_DECIMAL = 0;
-    public const FILL = 0;
 
     public const SIZE_LETTER = 0;
     public const SIZE_LEGAL = 1;
@@ -23,6 +22,16 @@ class HaruPage
 
     public const PORTRAIT = 0;
     public const LANDSCAPE = 1;
+
+    public const FILL = 0;
+    public const STROKE = 1;
+    public const FILL_THEN_STROKE = 2;
+    public const INVISIBLE = 3;
+    public const FILL_CLIPPING = 4;
+    public const STROKE_CLIPPING = 5;
+    public const FILL_STROKE_CLIPPING = 6;
+    public const CLIPPING = 7;
+    public const RENDERING_MODE_EOF = 8;
 
     private $h = null;
     private $ffi = null;
