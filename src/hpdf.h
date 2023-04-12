@@ -268,3 +268,12 @@ extern HPDF_STATUS
 HPDF_Page_SetSize  (HPDF_Page            page,
                     HPDF_PageSizes       size,
                     HPDF_PageDirection   direction);
+
+extern HPDF_STATUS
+HPDF_Page_Fill  (HPDF_Page  page);
+
+extern HPDF_STATUS
+HPDF_Page_FillStroke  (HPDF_Page  page);
+
+extern HPDF_STATUS
+HPDF_Page_ClosePathFillStroke  (HPDF_Page  page);

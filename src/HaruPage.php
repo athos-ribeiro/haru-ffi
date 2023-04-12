@@ -228,4 +228,23 @@ class HaruPage
         $annotation = new HaruAnnotation($annotation_ref);
         return $annotation;
     }
+
+    public function fill()
+    {
+        $status = $this->ffi->HPDF_Page_Fill($this->h);
+        if($status) {
+            // TODO: handle errors
+        }
+        return true;
+    }
+
+    public function fillStroke($close_path = false)
+    {
+        if(!$close_path) {
+            $status = $this->ffi->HPDF_Page_FillStroke($this->h);
+        } else {
+            $status = $this->ffi->HPDF_Page_ClosePathFillStroke($this->h);
+        }
+    }
+
 }
