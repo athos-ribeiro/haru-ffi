@@ -277,3 +277,17 @@ HPDF_Page_FillStroke  (HPDF_Page  page);
 
 extern HPDF_STATUS
 HPDF_Page_ClosePathFillStroke  (HPDF_Page  page);
+
+extern HPDF_STATUS
+HPDF_Page_MoveTextPos  (HPDF_Page    page,
+                        HPDF_REAL    x,
+                        HPDF_REAL    y);
+
+extern HPDF_STATUS
+HPDF_Page_MoveTextPos2  (HPDF_Page    page,
+                         HPDF_REAL    x,
+                         HPDF_REAL    y);
+
+extern HPDF_STATUS
+HPDF_Page_ShowText  (HPDF_Page    page,
+                     const char *text);

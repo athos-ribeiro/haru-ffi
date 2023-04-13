@@ -256,4 +256,25 @@ class HaruPage
         }
     }
 
+    public function moveTextPos($x, $y, $set_leading = false)
+    {
+        if(!$set_leading) {
+            $status = $this->ffi->HPDF_Page_MoveTextPos($this->h, $x, $y);
+        } else {
+            $status = $this->ffi->HPDF_Page_MoveTextPos2($this->h, $x, $y);
+        }
+        if($status) {
+            // TODO: handle errors
+        }
+        return true;
+    }
+
+    public function showText($text)
+    {
+        $status = $this->ffi->HPDF_Page_ShowText($this->h, $text);
+        if($status) {
+            throw new HaruException('', $status);
+        }
+        return true;
+    }
 }
