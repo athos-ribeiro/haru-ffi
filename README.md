@@ -11,6 +11,26 @@ For now, please, check the examples at `tests/UsageExamplesTest.php` or the
 unmaintained PECL extension documentation. If you are missing any specific
 features, do not hesitate to file an issue here so we can better prioritize.
 
+### Requirements
+
+This library is being developed with PHP >= 8.1. It is currently not tested
+with lower PHP versions. Moreover, note that the FFI extension is quite recent
+and this library may not work as intended in previous PHP versions.
+
+You will need to have libharu installed in your sysyem to use this library.
+
+In Debian, Ubuntu, or any derivatives, you can install it by running
+
+```
+sudo apt install libhpdf-2.3.0
+```
+
+In Fedora, RHEL or any derivatives, you can install it by running
+
+```
+sudo dnf install libhharu
+```
+
 ## Current development state
 
 As of version `0.1.0`, this initial, minimal version of haru-ffi is only enough
