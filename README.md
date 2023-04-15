@@ -31,6 +31,9 @@ In Fedora, RHEL or any derivatives, you can install it by running
 sudo dnf install libhharu
 ```
 
+Finally, your PHP installation must support FFI since this library is a set of
+bindings to an underlying C library.
+
 ### Development
 
 As long as you have PHP >= 8, composer, and libharu installed in your system,
