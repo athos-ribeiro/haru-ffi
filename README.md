@@ -33,7 +33,10 @@ sudo dnf install libhharu
 
 ## Current development state
 
-As of version `0.1.0`, this initial, minimal version of haru-ffi is only enough
-to generate the PDF version of the PHP documentation in
-[phd](https://github.com/php/phd). This version was extracted from
-https://github.com/php/phd/pull/69
+As of version `0.x.y`, this initial, minimal version of haru-ffi is only enough
+to
+
+- generate the PDF version of the PHP documentation in
+  [phd](https://github.com/php/phd). This version was extracted from [our phd
+  pdf generation pull request](https://github.com/php/phd/pull/69); and
+- run the examples described in `tests/UsageExamplesTest.php`.
