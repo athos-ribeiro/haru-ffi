@@ -21,6 +21,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libhpdf-2.3.0 php
       - uses: php-actions/composer@v6
+        with:
+          php_extensions: ffi
       - name: Run tests
         run: ./vendor/bin/phpunit tests/
 
@@ -30,5 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: php-actions/composer@v6
+        with:
+          php_extensions: ffi
       - name: Run linter
         run: ./vendor/bin/php-cs-fixer fix --dry-run --diff --using-cache=no -- .
