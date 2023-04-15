@@ -6,7 +6,8 @@
   "description": "libHaru FFI bindings compatible with the Haru PECL extension",
   "license": "BSD-2-Clause",
   "require": {
-    "php": ">=8"
+    "php": ">=8",
+    "ext-ffi": "*"
   },
   "autoload": {
     "psr-4": {
