@@ -1,0 +1,34 @@
+name: haru-ffi workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron:  '0 0 * * 1'
+
+jobs:
+  test:
+    name: Run unit tests
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@master
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libhpdf-2.3.0 php
+      - uses: php-actions/composer@v6
+      - name: Run tests
+        run: ./vendor/bin/phpunit tests/
+
+  style:
+    name: Check Style
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@master
+      - uses: php-actions/composer@v6
+      - name: Run linter
+        run: ./vendor/bin/php-cs-fixer fix --dry-run --diff --using-cache=no -- .
