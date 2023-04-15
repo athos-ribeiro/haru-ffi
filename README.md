@@ -31,6 +31,15 @@ In Fedora, RHEL or any derivatives, you can install it by running
 sudo dnf install libhharu
 ```
 
+### Development
+
+As long as you have PHP >= 8, composer, and libharu installed in your system,
+running `make check` should get you started by running our unit tests and any
+additional checks.
+
+Feel free to submit Pull Requests or file issues in our repository at
+https://github.com/athos-ribeiro/haru-ffi.
+
 ## Current development state
 
 As of version `0.x.y`, this initial, minimal version of haru-ffi is only enough
