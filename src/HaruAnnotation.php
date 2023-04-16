@@ -9,7 +9,7 @@ class HaruAnnotation
 
     public function __construct($annotation_ref)
     {
-        $this->ffi = \FFI::load(__DIR__.'/hpdf.h');
+        $this->ffi = HaruFFI::get_ffi();
         $this->h = $annotation_ref;
         if(is_null($this->h)) {
             throw new HaruException('Cannot create HaruAnnotation handle');

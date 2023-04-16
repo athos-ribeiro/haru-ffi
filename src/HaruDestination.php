@@ -9,7 +9,7 @@ class HaruDestination
 
     public function __construct($dest_ref)
     {
-        $this->ffi = \FFI::load(__DIR__.'/hpdf.h');
+        $this->ffi = HaruFFI::get_ffi();
         $this->h = $dest_ref;
         if(is_null($this->h)) {
             throw new HaruException('Cannot create HaruDestination handle');

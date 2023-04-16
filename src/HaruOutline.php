@@ -9,7 +9,7 @@ class HaruOutline
 
     public function __construct($outline_ref)
     {
-        $this->ffi = \FFI::load(__DIR__.'/hpdf.h');
+        $this->ffi = HaruFFI::get_ffi();
         $this->h = $outline_ref;
         if(is_null($this->h)) {
             throw new HaruException('Cannot create HaruOutline handle');

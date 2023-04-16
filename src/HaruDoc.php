@@ -33,11 +33,7 @@ class HaruDoc
 
     public function __construct()
     {
-        try {
-            $this->ffi = \FFI::load(__DIR__.'/hpdf.h');
-        } catch(\FFI\Exception $e) {
-            die($e->getFile() . ":" . $e->getLine() . ": " . $e->getMessage() . ". Is libharu installed?\n");
-        }
+        $this->ffi = HaruFFI::get_ffi();
         $this->h = $this->ffi->HPDF_New(null, null);
         if(is_null($this->h)) {
             throw new HaruException('Cannot create HaruDoc handle');

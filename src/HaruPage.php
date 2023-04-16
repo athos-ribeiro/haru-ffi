@@ -38,7 +38,7 @@ class HaruPage
 
     public function __construct($page_ref)
     {
-        $this->ffi = \FFI::load(__DIR__.'/hpdf.h');
+        $this->ffi = HaruFFI::get_ffi();
         $this->h = $page_ref;
         if(is_null($this->h)) {
             throw new HaruException('Cannot create HaruPage handle');
