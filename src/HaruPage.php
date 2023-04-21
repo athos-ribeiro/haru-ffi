@@ -103,12 +103,18 @@ class HaruPage
     public function getCharSpace()
     {
         $char_space = $this->ffi->HPDF_Page_GetCharSpace($this->h);
+        if(!$char_space) {
+            throw new HaruException('HPDF_Page_GetCharSpace returned zero.');
+        }
         return $char_space;
     }
 
     public function getWordSpace()
     {
         $word_space = $this->ffi->HPDF_Page_GetWordSpace($this->h);
+        if(!$word_space) {
+            throw new HaruException('HPDF_Page_GetWordSpace returned zero.');
+        }
         return $word_space;
     }
 
@@ -118,11 +124,15 @@ class HaruPage
         if($status) {
             throw new HaruException('', $status);
         }
+        return true;
     }
 
     public function getTextWidth($text)
     {
         $width = $this->ffi->HPDF_Page_TextWidth($this->h, (string)$text);
+        if(!$width) {
+            throw new HaruException('HPDF_Page_TextWidth returned zero.');
+        }
         return $width;
     }
 
