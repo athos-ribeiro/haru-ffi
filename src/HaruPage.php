@@ -51,6 +51,7 @@ class HaruPage
         if($status) {
             throw new HaruException('', $status);
         }
+        return true;
     }
 
     public function setRGBStroke($r, $g, $b)
@@ -59,6 +60,7 @@ class HaruPage
         if($status) {
             throw new HaruException('', $status);
         }
+        return true;
     }
 
     public function setRGBFill($r, $g, $b)
@@ -67,6 +69,7 @@ class HaruPage
         if($status) {
             throw new HaruException('', $status);
         }
+        return true;
     }
 
     public function setSize($size, $direction)
@@ -75,6 +78,7 @@ class HaruPage
         if($status) {
             throw new HaruException('', $status);
         }
+        return true;
     }
 
     public function setFontAndSize($font, $size)
@@ -84,6 +88,7 @@ class HaruPage
         if($status) {
             throw new HaruException('', $status);
         }
+        return true;
     }
 
     public function beginText()
@@ -92,6 +97,7 @@ class HaruPage
         if($status) {
             throw new HaruException('', $status);
         }
+        return true;
     }
 
     public function getCharSpace()
