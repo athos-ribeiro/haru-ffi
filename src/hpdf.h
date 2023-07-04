@@ -1,4 +1,4 @@
-#define FFI_LIB "/usr/lib/x86_64-linux-gnu/libhpdf-2.3.0.so"
+#define FFI_LIB "libhpdf-2.3.0.so"
 
 typedef enum _HPDF_PageNumStyle {
     HPDF_PAGE_NUM_STYLE_DECIMAL = 0,
