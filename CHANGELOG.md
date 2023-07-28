@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Allow system-wide library search when loading libhpdf.
+
 ### Fixed
 
 - Fix some bogus return values.
