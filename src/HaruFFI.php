@@ -8,7 +8,7 @@ class HaruFFI
 {
     private static $ffi = null;
 
-    public static function get_ffi()
+    public static function get_ffi(): \FFI
     {
         if(!self::$ffi) {
             try {

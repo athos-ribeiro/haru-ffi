@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Allow system-wide library search when loading libhpdf.
+- Enable strict typing.
 
 ### Fixed
 
